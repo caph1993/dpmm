@@ -1,0 +1,58 @@
+{
+    "type": {
+        "categories": [
+            "white",
+            "red"
+        ]
+    },
+    "fixed acidity": {
+        "lower": 3.8,
+        "upper": 15.9
+    },
+    "volatile acidity": {
+        "lower": 0.08,
+        "upper": 1.24
+    },
+    "citric acid": {
+        "lower": 0.0,
+        "upper": 1.66
+    },
+    "residual sugar": {
+        "lower": 0.6,
+        "upper": 65.8
+    },
+    "chlorides": {
+        "lower": 0.009,
+        "upper": 0.611
+    },
+    "free sulfur dioxide": {
+        "lower": 1.0,
+        "upper": 289.0
+    },
+    "total sulfur dioxide": {
+        "lower": 6.0,
+        "upper": 440.0
+    },
+    "density": {
+        "lower": 0.98711,
+        "upper": 1.03898
+    },
+    "pH": {
+        "lower": 2.72,
+        "upper": 4.01
+    },
+    "sulphates": {
+        "lower": 0.22,
+        "upper": 2.0
+    },
+    "alcohol": {
+        "lower": 8.0,
+        "upper": 14.9
+    },
+    "quality": {
+        "categories": [
+            0,
+            1
+        ]
+    }
+}
