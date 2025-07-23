@@ -262,7 +262,7 @@ class PrivBayes(Mechanism):
             )
 
         while len(remaining) > 0:
-            degree = min(len(used), self.degree)
+            degree = min(len(used), self.degree - 1)
             candidates = []
             combs = list(combinations(used, degree))
             for col in remaining:

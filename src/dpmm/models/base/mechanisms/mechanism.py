@@ -143,7 +143,7 @@ class Mechanism:
         self.model_size = sum([y.nbytes for (_, y, _, _) in measures]) / (8 * 1024**2)
         self.fit_state = "pretrained"
         if not public and not marginals_only:
-            engine = FactoredInference(data.domain, self.n_iters, prng=self.prng)
+            engine = FactoredInference(domain=data.domain, iters=self.n_iters, prng=self.prng)
             self.model = engine.estimate(measures)
 
             self.fit_state = "trained"
