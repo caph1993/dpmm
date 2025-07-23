@@ -47,12 +47,6 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [[tool.poetry.source]]
-name = "cloudpipe"
-url = "https://artifact.unx.sas.com/artifactory/api/pypi/cloudpipe-pypi-vrel/simple"
-priority = "primary"
-
-
-[[tool.poetry.source]]
 name = "PyPI"
 priority = "primary"
 
