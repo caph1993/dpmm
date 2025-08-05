@@ -165,7 +165,9 @@ class TableBinner:
 
         return categories
 
-    def insert_col(self, df: pd.DataFrame, col: str, series: pd.Series) -> Tuple[pd.DataFrame, str]:
+    def insert_col(
+        self, df: pd.DataFrame, col: str, series: pd.Series
+    ) -> Tuple[pd.DataFrame, str]:
         """
         Insert a new column into the DataFrame, ensuring no name conflicts.
 
@@ -210,7 +212,7 @@ class TableBinner:
         for col, series in df.items():
             na_flag = series.isna()
             not_na_flag = ~na_flag
-            if (na_flag.any() and not_na_flag.any()):
+            if na_flag.any() and not_na_flag.any():
                 fill_value = (
                     df.loc[not_na_flag, col]
                     .sample(n=1, random_state=self.random_state)
@@ -235,7 +237,9 @@ class TableBinner:
 
         # Numerical Columns
         self.num_cols = [
-            col for col, series in df.items() if series.dtype.kind in "Mmfui"
+            col
+            for col, series in df.items()
+            if ((series.dtype.kind) in "Mmfui" and (series.dropna().nunique() > 1))
         ]
 
         # Compute Epsilon
@@ -243,7 +247,7 @@ class TableBinner:
             epsilon = None
         else:
             epsilon = self.binner_settings.get("epsilon", None)
-            if epsilon is not None:
+            if epsilon is not None and len(self.num_cols) > 0:
                 # Split the epsilon
                 epsilon /= len(self.num_cols)
 
@@ -252,7 +256,7 @@ class TableBinner:
         for col in self.cat_cols:
             categories = self.get_categories(col, df[col], public=public)
             self.bin_domain[col] = len(categories)
-            self.categories[col]  = categories
+            self.categories[col] = categories
             self.cat_encoders[col] = OrdinalEncoder(categories=[categories])
             self.cat_encoders[col] = OrdinalEncoder(categories=[categories])
             self.cat_encoders[col].fit(df[col].to_frame())
